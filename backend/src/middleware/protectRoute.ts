@@ -1,4 +1,4 @@
-import token, { JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 import { Request, Response, NextFunction } from "express";
 import prisma from "../db/prisma.js";
@@ -19,13 +19,13 @@ declare global {
 
 const protectRoute = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const jwt = req.cookies.token;
+		const token = req.cookies.jwt;
 
-		if (!jwt) {
+		if (!token) {
 			return res.status(401).json({ error: "Unauthorized - No token provided" });
 		}
 
-		const decoded = token.verify(jwt, process.env.JWT_SECRET!) as DecodedToken;
+		const decoded = jwt.verify(token, process.env.JWT_SECRET!) as DecodedToken;
 
 		if (!decoded) {
 			return res.status(401).json({ error: "Unauthorized - Invalid token" });
