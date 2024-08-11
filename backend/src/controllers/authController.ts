@@ -24,9 +24,9 @@ export const signup = async (req: Request, res: Response) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
-    // https://avatar-placeholder.iran.liara.run/
-    const boyProfilePic = `https://avatar-placeholder.iran.liara.run/public/boy?username=${username}`;
-    const girlProfilePic = `https://avatar-placeholder.iran.liara.run/public/girl?username=${username}`;
+    // https://avatar.iran.liara.run/
+    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
     const newUser = await prisma.user.create({
       data: {
@@ -85,7 +85,8 @@ export const login = async (req: Request, res: Response) => {
       id: user.id,
       fullName: user.fullName,
       username: user.username,
-      profilePic: user.profilePic
+      profilePic: user.profilePic,
+      gender: user.gender
     });
 
   } catch (error:any) {
