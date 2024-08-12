@@ -1,7 +1,7 @@
 import { useSocketContext } from "../../context/SocketContext";
 import useConversation, { ConversationType } from "../../zustand/useConversation";
 
-const Conversation = ({ conversation, emoji }: { conversation: ConversationType, emoji: string }) => {
+const Conversation = ({ conversation }: { conversation: ConversationType, emoji: string }) => {
 
 	const { setSelectedConversation, selectedConversation } = useConversation()
 	const isSelected = selectedConversation?.id === conversation.id
@@ -24,7 +24,7 @@ const Conversation = ({ conversation, emoji }: { conversation: ConversationType,
 				<div className='flex flex-col flex-1'>
 					<div className='flex gap-3 justify-between'>
 						<p className='font-bold text-gray-200 text-sm md:text-md'>{conversation.fullName}</p>
-						<span className='text-xl hidden md:inline-block'>{emoji}</span>
+						{/* <span className='text-xl hidden md:inline-block'>{emoji}</span> */}
 					</div>
 				</div>
 			</div>

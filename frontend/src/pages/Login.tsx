@@ -20,7 +20,7 @@ const Login = () => {
 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30'>
 				<h1 className='text-3xl font-semibold text-center text-white'>
 					Login
-					<span className='text-black'> Borak</span>
+					<span className='text-black'> Cakap</span>
 				</h1>
 
 				<form onSubmit={handleSubmitForm}>
