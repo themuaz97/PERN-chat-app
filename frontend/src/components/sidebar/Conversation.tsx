@@ -1,3 +1,4 @@
+import { useSocketContext } from "../../context/SocketContext";
 import useConversation, { ConversationType } from "../../zustand/useConversation";
 
 const Conversation = ({ conversation, emoji }: { conversation: ConversationType, emoji: string }) => {
@@ -5,7 +6,8 @@ const Conversation = ({ conversation, emoji }: { conversation: ConversationType,
 	const { setSelectedConversation, selectedConversation } = useConversation()
 	const isSelected = selectedConversation?.id === conversation.id
 
-	const isOnline = false
+	const {onlineUsers} = useSocketContext()
+	const isOnline = onlineUsers.includes(conversation.id)
 
 	return (
 		<>

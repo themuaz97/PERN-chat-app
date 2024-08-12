@@ -4,11 +4,10 @@ import messageRoutes from "./routes/message.route.js";
 import cookieParser from "cookie-parser";
 
 import dotenv from "dotenv";
+import { app, server } from "./socket/socket.js";
 dotenv.config();
 
-const PORT = process.env.PORT || 5001
-
-const app = express();
+const PORT = process.env.PORT || 5002
 
 app.use(cookieParser()); // for parsing cookies
 app.use(express.json()); // for parsing application/json
@@ -16,6 +15,6 @@ app.use(express.json()); // for parsing application/json
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });
